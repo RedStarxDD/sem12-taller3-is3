@@ -19,11 +19,19 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Install dependencies and run tests with coverage
-        run: mvn clean test
+      - name: Grant execute permissions to Gradle wrapper
+        run: chmod +x gradlew
 
-      - name: Upload JaCoCo coverage report
-        uses: actions/upload-artifact@v4
+      - name: Run tests with JaCoCo
+        run: ./gradlew test jacocoTestReport
+
+      - name: Generate JaCoCo Badge
+        uses: cicirello/jacoco-badge-generator@v2
         with:
-          name: jacoco-coverage-report
-          path: target/site/jacoco/
+          jacoco-csv-file: build/reports/jacoco/test/jacocoTestReport.csv
+
+      - name: Commit coverage badge
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: ".github/badges/jacoco.svg"
+          message: "Update JaCoCo coverage badge"
