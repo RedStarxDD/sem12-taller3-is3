@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Pedido.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Semana12-Taller3</a> &gt; <a href="index.source.html" class="el_package">Base</a> &gt; <span class="el_source">Pedido.java</span></div><h1>Pedido.java</h1><pre class="source lang-java linenums">/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Base;
+
+import Modelo.Producto;
+import java.util.List;
+
+/**
+ *
+ * @author user
+ */
+<span class="nc" id="L14">public class Pedido {</span>
+    public static double calcularTotalPedido(List&lt;Producto&gt; productos, double descuento) {
+<span class="nc bnc" id="L16" title="All 4 branches missed.">        if (productos == null || productos.isEmpty()) {</span>
+<span class="nc" id="L17">            throw new IllegalArgumentException(&quot;Error: no hay productos en el pedido&quot;);</span>
+        }
+<span class="nc" id="L19">        double subtotal = productos.stream()</span>
+<span class="nc" id="L20">            .mapToDouble(p -&gt; p.getPrecio() * p.getCantidad())</span>
+<span class="nc" id="L21">            .sum();</span>
+<span class="nc bnc" id="L22" title="All 2 branches missed.">        if (subtotal &lt;= 0) {</span>
+<span class="nc" id="L23">            throw new IllegalArgumentException(&quot;Error: monto inválido&quot;);</span>
+        }
+<span class="nc" id="L25">            return subtotal - (subtotal * (descuento / 100));</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
