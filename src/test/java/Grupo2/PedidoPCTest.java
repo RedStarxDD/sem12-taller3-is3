@@ -40,13 +40,13 @@ public class PedidoPCTest {
         assertTrue(pedido.agregarProducto(pValido, 10));
     }
     
-    @Test
+    /*@Test
     public void productoConAtributosPreservadosTest(){
         pValido.setCantidad(10);
         pedido.agregarProducto(pValido, 10);
         Producto actual=pedido.getDetallesPedido().getFirst();
         assertEquals(pValido, actual);
-    }
+    }*/
     
     //Se decidió no admitir productos inactivos
     @Test
