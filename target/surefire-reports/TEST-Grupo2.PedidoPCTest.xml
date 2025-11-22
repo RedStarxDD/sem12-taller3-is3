@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="Grupo2.ServicioGrupo2Test" time="0.026" tests="5" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="Grupo2.PedidoPCTest" time="0.07" tests="8" errors="0" skipped="0" failures="1">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,8 +15,9 @@
     <property name="user.country" value="PE"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\RedStar\AppData\Local\Temp\surefire1204992076643924031\surefirebooter18335858042120011072.jar C:\Users\RedStar\AppData\Local\Temp\surefire1204992076643924031 2025-11-21T21-07-07_804-jvmRun1 surefire12865084878917327224tmp surefire_08455744854416356916tmp"/>
+    <property name="sun.java.command" value="C:\Users\RedStar\AppData\Local\Temp\surefire9848248809181626861\surefirebooter14635098691418372585.jar C:\Users\RedStar\AppData\Local\Temp\surefire9848248809181626861 2025-11-21T22-20-50_107-jvmRun1 surefire12911973808688154146tmp surefire_05136257339627255284tmp"/>
     <property name="jdk.debug" value="release"/>
+    <property name="test" value="Grupo2.PedidoPCTest"/>
     <property name="surefire.test.class.path" value="C:\Users\RedStar\Documents\USIL\Ciclo 6\Ingeniería de Software\sem12-taller3-is3\target\test-classes;C:\Users\RedStar\Documents\USIL\Ciclo 6\Ingeniería de Software\sem12-taller3-is3\target\classes;C:\Users\RedStar\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.0\junit-jupiter-api-5.6.0.jar;C:\Users\RedStar\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\RedStar\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\RedStar\.m2\repository\org\junit\platform\junit-platform-commons\1.6.0\junit-platform-commons-1.6.0.jar;C:\Users\RedStar\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.6.0\junit-jupiter-params-5.6.0.jar;C:\Users\RedStar\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.6.0\junit-jupiter-engine-5.6.0.jar;C:\Users\RedStar\.m2\repository\org\junit\platform\junit-platform-engine\1.6.0\junit-platform-engine-1.6.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\RedStar"/>
@@ -30,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\RedStar\AppData\Local\Temp\surefire1204992076643924031\surefirebooter18335858042120011072.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\RedStar\AppData\Local\Temp\surefire9848248809181626861\surefirebooter14635098691418372585.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.1+12-LTS-29"/>
@@ -59,9 +60,16 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="aplicarIGVTest" classname="Grupo2.ServicioGrupo2Test" time="0.001"/>
-  <testcase name="montoFueraDelLimiteTest" classname="Grupo2.ServicioGrupo2Test" time="0.009"/>
-  <testcase name="descuentoFueraDelLimiteTest" classname="Grupo2.ServicioGrupo2Test" time="0.002"/>
-  <testcase name="clienteVacioTest" classname="Grupo2.ServicioGrupo2Test" time="0.003"/>
-  <testcase name="listaConCantidadProductosInvalidaTest" classname="Grupo2.ServicioGrupo2Test" time="0.001"/>
+  <testcase name="productoAgregadoCorrectoTest" classname="Grupo2.PedidoPCTest" time="0.027"/>
+  <testcase name="productoSkuDuplicadoTest" classname="Grupo2.PedidoPCTest" time="0.002"/>
+  <testcase name="productoCantidadInvalidaTest" classname="Grupo2.PedidoPCTest" time="0.003"/>
+  <testcase name="pedidoConStockValidoTest" classname="Grupo2.PedidoPCTest" time="0.002"/>
+  <testcase name="productoInactivoTest" classname="Grupo2.PedidoPCTest" time="0.001"/>
+  <testcase name="productoConAtributosPreservadosTest" classname="Grupo2.PedidoPCTest" time="0.016">
+    <failure message="expected: &lt;Modelo.Producto@170ab1&gt; but was: &lt;Modelo.Producto@26f&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <Modelo.Producto@170ab1> but was: <Modelo.Producto@26f>
+	at Grupo2.PedidoPCTest.productoConAtributosPreservadosTest(PedidoPCTest.java:48)
+]]></failure>
+  </testcase>
+  <testcase name="pedidoVacioTest" classname="Grupo2.PedidoPCTest" time="0.002"/>
+  <testcase name="pedidoConStockLimiteTest" classname="Grupo2.PedidoPCTest" time="0"/>
 </testsuite>

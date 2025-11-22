@@ -4,7 +4,6 @@
  */
 package Grupo2;
 
-import Base.Pedido;
 import Modelo.Producto;
 import java.util.List;
 
@@ -12,15 +11,25 @@ import java.util.List;
  *
  * @author user
  */
-<span class="nc" id="L15">public class ServicioGrupo2 {</span>
-    public static void validarTotalPedido(List&lt;Producto&gt; productos, double descuento){
-<span class="nc bnc" id="L17" title="All 2 branches missed.">        if(verificarStock(productos)) Pedido.calcularTotalPedido(productos, descuento);</span>
-<span class="nc" id="L18">        else throw new IllegalArgumentException(&quot;Error en función secundaria&quot;);</span>
-<span class="nc" id="L19">    }</span>
+<span class="nc" id="L14">public class ServicioGrupo2 {</span>
+    public static boolean verificarLimite(double total){
+<span class="fc bfc" id="L16" title="All 2 branches covered.">        return total&lt;=5000;</span>
+    }
     
+    public static boolean validarDescuento(double descuento){
+<span class="fc bfc" id="L20" title="All 4 branches covered.">        return descuento&gt;=0 &amp;&amp; descuento&lt;=50;</span>
+    }
+    
+    public static double calcularIGV(double total){
+<span class="fc" id="L24">        return total*1.18;</span>
+    }
+    
+    public static boolean validarCliente(String nombre) {
+<span class="pc bpc" id="L28" title="1 of 4 branches missed.">        return nombre != null &amp;&amp; !nombre.trim().isEmpty();</span>
+    }
     public static boolean verificarStock(List&lt;Producto&gt; productos){
-<span class="fc" id="L22">        return productos.stream()</span>
-<span class="pc bnc" id="L23" title="All 2 branches missed.">            .anyMatch(p -&gt; p.getCantidad() &gt; 0);</span>
+<span class="fc" id="L31">        return productos.stream()</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">            .allMatch(p -&gt; p.getCantidad() &gt; 0);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

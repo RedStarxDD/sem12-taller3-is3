@@ -6,6 +6,7 @@ package Base;
 
 import Grupo2.ServicioGrupo2;
 import Modelo.Producto;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,6 +14,8 @@ import java.util.List;
  * @author user
  */
 public class Pedido {
+    private List<Producto> detallesPedido=new ArrayList<>();
+    
     public static double calcularTotalPedido(List<Producto> productos, double descuento) {
         if (productos == null || productos.isEmpty()) {
             throw new IllegalArgumentException("Error: no hay productos en el pedido");
@@ -49,4 +52,47 @@ public class Pedido {
         
         return ServicioGrupo2.calcularIGV(total);
     }
+    
+    public boolean agregarProducto(Producto producto, int cantidad) {
+        if (cantidad <= 0) {
+            System.err.println("Error: La cantidad a agregar debe ser positiva.");
+            return false;
+        }
+        
+        if(!producto.isEsActivo()){
+            System.err.println("Producto inactivo");
+            return false;
+        }
+        
+        // Busca si el producto ya existe en la lista 
+        boolean productoYaExiste=false;
+        if(!detallesPedido.isEmpty()) productoYaExiste = detallesPedido.stream()
+                .anyMatch(p -> p.getNombre().equals(producto.getNombre()));
+        if (productoYaExiste) {
+            return false; // Falla porque ya existe 
+        } else {
+        // Creamos una nueva instancia con la cantidad especificada y la añadimos a la lista 
+            detallesPedido.add(new Producto(producto.getNombre(), producto.getPrecio(), cantidad));
+            return true;
+        }
+    }
+
+    public boolean validarStock() {
+        if(detallesPedido.isEmpty()){
+            return false;
+        }
+        
+        for (Producto p : detallesPedido) {
+            if (p.getCantidad() <= 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public List<Producto> getDetallesPedido() {
+        return detallesPedido;
+    }
+    
+    
 }
